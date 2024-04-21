@@ -12,7 +12,7 @@ const client = new Client({
 });
 
 // Токен вашего бота
-const TOKEN = 'MTIyNzcyOTcxMTYyNzc2MzcyMw.Goqd4-.p-jShLT6FgtSiicwmJ9Onz7jqCfo-wHeRK4vmQ';
+const TOKEN = process.env.DISCORD_TOKEN;
 
 // Функция для запроса информации о сервере игры
 async function queryGameServer(game, address, port) {
