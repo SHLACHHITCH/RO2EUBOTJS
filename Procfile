@@ -1,1 +1,1 @@
-worker: node RSEUBOT.js
+worker: node RO2EUBOT.js
