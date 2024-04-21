@@ -1,0 +1,13 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "Discord bot deployed on Heroku",
+  "main": "RO2EUBOT.js",
+  "scripts": {
+    "start": "node RO2EUBOT.js"
+  },
+  "dependencies": {
+    "discord.js": "^13.5.0",
+    "gamedig": "^3.0.0"
+  }
+}
