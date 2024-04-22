@@ -1,7 +1,6 @@
 const { Client, GatewayIntentBits, ActivityType } = require('discord.js');
 const { GameDig } = require('gamedig');
 const express = require('express');
-const fetch = require('node-fetch'); // Добавляем зависимость для работы с HTTP запросами
 
 // Создаем новый экземпляр клиента Discord с указанием намерений
 const client = new Client({ 
