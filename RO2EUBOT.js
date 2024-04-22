@@ -1,5 +1,6 @@
 const { Client, GatewayIntentBits, ActivityType } = require('discord.js');
 const { GameDig } = require('gamedig');
+const keep_alive = require('./keep_alive.js');
 const cron = require('node-cron');
 
 // Создаем новый экземпляр клиента Discord с указанием намерений
