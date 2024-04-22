@@ -1,9 +1,0 @@
-{
-  "version": 2,
-  "builds": [
-    {
-      "src": "RO2EUBOT.js",
-      "use": "@vercel/node"
-    }
-  ]
-}
