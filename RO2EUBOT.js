@@ -102,7 +102,7 @@ client.once('ready', () => {
     setInterval(updateStatus, 60000);
 
     // Отправляем keep-alive запрос каждые 5 минут (300 000 миллисекунд)
-    setInterval(sendKeepAliveRequest, 300000);
+    setInterval(sendKeepAliveRequest, 120000);
 });
 
 // Запускаем бота
