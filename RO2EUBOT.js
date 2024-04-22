@@ -1,6 +1,7 @@
 const { Client, GatewayIntentBits, ActivityType } = require('discord.js');
 const { GameDig } = require('gamedig');
 const express = require('express');
+const fetch = require('node-fetch'); // Добавляем зависимость для работы с HTTP запросами
 
 // Создаем новый экземпляр клиента Discord с указанием намерений
 const client = new Client({ 
@@ -83,6 +84,16 @@ async function updateStatus() {
     }
 }
 
+// Функция для отправки keep-alive запроса к серверу
+async function sendKeepAliveRequest() {
+    try {
+        await fetch('http://localhost:' + PORT); // Отправляем запрос к корневому маршруту
+        console.log('Keep-alive request sent.');
+    } catch (error) {
+        console.error('Ошибка при отправке keep-alive запроса:', error);
+    }
+}
+
 // Событие при успешном запуске бота
 client.once('ready', () => {
     console.log('Бот запущен!');
@@ -90,6 +101,9 @@ client.once('ready', () => {
     updateStatus();
     // Обновляем статус каждые 1 минуту (60 000 миллисекунд)
     setInterval(updateStatus, 60000);
+
+    // Отправляем keep-alive запрос каждые 5 минут (300 000 миллисекунд)
+    setInterval(sendKeepAliveRequest, 300000);
 });
 
 // Запускаем бота
