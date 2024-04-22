@@ -1,7 +1,6 @@
 const { Client, GatewayIntentBits, ActivityType } = require('discord.js');
 const { GameDig } = require('gamedig');
-const keep_alive = require('./keep_alive.js');
-const cron = require('node-cron');
+const keep_alive = require('./keep_alive.js'); // Добавлено обратно
 
 // Создаем новый экземпляр клиента Discord с указанием намерений
 const client = new Client({ 
@@ -70,17 +69,6 @@ async function updateStatus() {
     }
 }
 
-// Функция для отправки keep-alive запроса к серверу
-async function sendKeepAliveRequest() {
-    try {
-        // Отправляем keep-alive запрос на ваш URL на Render
-        await fetch('https://ro2eubotjs.onrender.com');
-        console.log('Keep-alive request sent.');
-    } catch (error) {
-        console.error('Ошибка при отправке keep-alive запроса:', error);
-    }
-}
-
 // Событие при успешном запуске бота
 client.once('ready', () => {
     console.log('Бот запущен!');
@@ -88,11 +76,6 @@ client.once('ready', () => {
     updateStatus();
     // Обновляем статус каждые 1 минуту (60 000 миллисекунд)
     setInterval(updateStatus, 60000);
-
-    // Запускаем cron job для отправки keep-alive запроса каждые 5 минут
-    cron.schedule('*/5 * * * *', () => {
-        sendKeepAliveRequest();
-    });
 });
 
 // Запускаем бота
